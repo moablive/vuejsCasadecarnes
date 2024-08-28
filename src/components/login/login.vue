@@ -34,7 +34,7 @@ export default defineComponent({
   methods: {
     async handleSubmit() {
       try {
-        const response = await axios.post(`${import.meta.env.VITE_API_URL}api/usuarios/login`, {
+        const response = await axios.post(`${import.meta.env.VITE_API_URL}/api/usuarios/login`, {
           username: this.username,
           password: this.password,
         });
