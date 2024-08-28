@@ -1,6 +1,6 @@
 // src/services/ClientService.ts
 import axios from 'axios';
-import { Cliente } from '@/interfaces/Cliente';
+import { Cliente } from '../interfaces/cliente';
 
 // Configura a instância do Axios para usar a URL da API
 const apiClient = axios.create({
