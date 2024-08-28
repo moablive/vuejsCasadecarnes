@@ -4,7 +4,7 @@
     <div class="content p-5 bg-primary text-white rounded">
       <h1>CONTEUDO DA PAGINA HOME</h1>
     </div>
-  </template>
+</template>
   
   <script lang="ts">
   import { defineComponent } from 'vue';
