@@ -1,31 +1,39 @@
 <template>
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
-    <div class="container-fluid">
-      <a class="navbar-brand" href="/home">LOGO</a>
-      <button
-        class="navbar-toggler"
-        type="button"
-        data-bs-toggle="collapse"
-        data-bs-target="#navbarNav"
-        aria-controls="navbarNav"
-        aria-expanded="false"
-        aria-label="Toggle navigation"
-      >
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav me-auto">
-          <li class="nav-item">
-            <router-link class="nav-link" to="/clientes">Clientes</router-link>
-          </li>
-        </ul>
-        <ul class="navbar-nav ms-auto">
-          <li class="nav-item">
-            <a class="nav-link" href="#" @click="handleLogout">
-              <i class="fa-solid fa-arrow-right-from-bracket"></i> Logout
-            </a>
-          </li>
-        </ul>
+  <nav class="bg-gray-800 p-4 fixed w-full z-10 top-0 shadow">
+    <div class="container mx-auto flex items-center justify-between">
+      <router-link to="/home" class="text-white font-bold text-lg">
+        LOGO
+      </router-link>
+      <div class="flex items-center space-x-4">
+        <div class="relative group">
+          <button
+            class="text-white px-3 py-2 rounded-md text-sm font-medium focus:outline-none"
+          >
+            Clientes
+          </button>
+          <div
+            class="absolute left-0 bg-white text-black shadow-lg rounded-md mt-2 py-2 opacity-0 group-hover:opacity-100 group-hover:translate-y-0 transition-opacity duration-300 ease-in-out pointer-events-auto"
+          >
+            <router-link
+              to="/clientes"
+              class="block px-4 py-2 hover:bg-gray-100"
+            >
+              Listar Clientes
+            </router-link>
+            <router-link
+              to="/cadastrar-cliente"
+              class="block px-4 py-2 hover:bg-gray-100"
+            >
+              Cadastrar Cliente
+            </router-link>
+          </div>
+        </div>
+        <button
+          class="text-white px-3 py-2 rounded-md text-sm font-medium hover:bg-gray-700 focus:outline-none"
+          @click="handleLogout"
+        >
+          Logout
+        </button>
       </div>
     </div>
   </nav>
@@ -41,17 +49,17 @@ export default defineComponent({
   setup() {
     const router = useRouter();
     return {
-      router
+      router,
     };
   },
   methods: {
     handleLogout() {
       logout(this.router);
-    }
-  }
+    },
+  },
 });
 </script>
 
 <style scoped>
-/* Adiciona estilos adicionais, se necessário */
+/* Estilos adicionais, se necessário */
 </style>

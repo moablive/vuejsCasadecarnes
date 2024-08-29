@@ -2,8 +2,8 @@
     <div>
         <Navbar />
         <div class="pt-16 max-w-3xl mx-auto mt-10">
-            <h1 class="text-center text-3xl font-bold mb-8">Cadastro de Cliente</h1>
-            <form @submit.prevent="saveClient" class="bg-white p-6 rounded-lg shadow-lg">
+            <h1 class="text-center text-3xl font-bold mb-8">Editar Cliente</h1>
+            <form @submit.prevent="updateClient" class="bg-white p-6 rounded-lg shadow-lg">
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
                     <div>
                         <label for="nome" class="block text-gray-700 font-semibold mb-2">Nome</label>
@@ -81,7 +81,7 @@
                 </div>
                 <div class="text-center">
                     <button class="bg-green-500 text-white font-semibold py-2 px-4 rounded hover:bg-green-600 mr-2"
-                        type="submit">Salvar Cliente</button>
+                        type="submit">Salvar Alterações</button>
                     <button class="bg-gray-500 text-white font-semibold py-2 px-4 rounded hover:bg-gray-600"
                         type="button" @click="cancel">Cancelar</button>
                 </div>
@@ -91,14 +91,14 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref } from 'vue';
-import { useRouter } from 'vue-router';
-import ClientService from '../../services/ClientService';
-import { Cliente } from '../../interfaces/cliente';
-import Navbar from '../Navbar.vue';
+import { defineComponent, ref, onMounted } from 'vue';
+import { useRouter, useRoute } from 'vue-router';
+import ClientService from '@/services/ClientService';
+import { Cliente } from '@/interfaces/cliente';
+import Navbar from '@/components/Navbar.vue';
 
 export default defineComponent({
-    name: 'CadastrarCliente',
+    name: 'EditarCliente',
     components: {
         Navbar,
     },
@@ -119,13 +119,24 @@ export default defineComponent({
             CODIGO_TELECON: null,
         });
         const router = useRouter();
+        const route = useRoute();
+        const clientId = Number(route.params.id);
 
-        const saveClient = async () => {
+        const fetchClient = async () => {
             try {
-                await ClientService.registerClient(cliente.value);
+                const response = await ClientService.getClientById(clientId);
+                cliente.value = response.data;
+            } catch (error) {
+                console.error('Erro ao buscar cliente:', error);
+            }
+        };
+
+        const updateClient = async () => {
+            try {
+                await ClientService.updateClient(clientId, cliente.value);
                 router.push('/clientes');
             } catch (error) {
-                console.error('Erro ao salvar cliente:', error);
+                console.error('Erro ao atualizar cliente:', error);
             }
         };
 
@@ -133,9 +144,11 @@ export default defineComponent({
             router.push('/clientes');
         };
 
+        onMounted(fetchClient);
+
         return {
             cliente,
-            saveClient,
+            updateClient,
             cancel,
         };
     },
@@ -143,5 +156,21 @@ export default defineComponent({
 </script>
 
 <style scoped>
-/* Estilos adicionais conforme necessário */
+.container {
+    max-width: 800px;
+    margin-top: 20px;
+}
+h1 {
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+form {
+    background-color: #f8f9fa;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+button {
+    margin-top: 20px;
+}
 </style>

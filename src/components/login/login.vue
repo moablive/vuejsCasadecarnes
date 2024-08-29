@@ -1,19 +1,22 @@
 <template>
-  <div class="login-background d-flex justify-content-center align-items-center vh-100">
-    <div class="card p-4" style="width: 400px;">
-      <h1 class="text-center mb-4">Login</h1>
+  <div class="bg-cover bg-center bg-no-repeat h-screen flex justify-center items-center" style="background-image: url('#');">
+    <div class="bg-white bg-opacity-90 p-8 rounded-lg shadow-lg w-96">
+      <h1 class="text-2xl font-bold text-center mb-6">Login</h1>
       <form @submit.prevent="handleSubmit">
-        <div class="mb-3">
-          <label for="username" class="form-label">Usuário</label>
-          <input type="text" id="username" class="form-control" v-model="username" required
-            placeholder="Digite seu usuário" />
+        <div class="mb-4">
+          <label for="username" class="block text-sm font-medium text-gray-700">Usuário</label>
+          <input type="text" id="username" v-model="username" required placeholder="Digite seu usuário"
+            class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
         </div>
-        <div class="mb-3">
-          <label for="password" class="form-label">Senha</label>
-          <input type="password" id="password" class="form-control" v-model="password" required
-            placeholder="Digite sua senha" />
+        <div class="mb-6">
+          <label for="password" class="block text-sm font-medium text-gray-700">Senha</label>
+          <input type="password" id="password" v-model="password" required placeholder="Digite sua senha"
+            class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
         </div>
-        <button type="submit" class="btn btn-primary w-100">Entrar</button>
+        <button type="submit"
+          class="w-full bg-indigo-600 text-white py-2 px-4 rounded-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+          Entrar
+        </button>
       </form>
     </div>
   </div>
@@ -53,15 +56,5 @@ export default defineComponent({
 </script>
 
 <style scoped>
-.login-background {
-  background-image: url('https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExc201azRuM3B5MzR3ZzJreXZoOTV1ZG02NXFrMGxqbDlmZWRua3A0ciZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/L8K62iTDkzGX6/giphy.webp');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-}
-
-.card {
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
-  background-color: rgba(255, 255, 255, 0.9); /* Fundo semi-transparente */
-}
+/* Você pode remover o estilo se desejar, o Tailwind lida com isso agora */
 </style>
