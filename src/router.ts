@@ -7,10 +7,9 @@ import Login from './components/login/login.vue';
 import Home from './components/home/home.vue';
 
 // Components de Cliente
-import Clientes from './components/clientes/clientes.vue';
-import CadastrarCliente from './components/clientes/cadastrarCliente.vue';
-import EditarCliente from './components/clientes/editarCliente.vue';
-
+import Clientes from './components/clientes/clientes/clientes.vue';
+import CadastrarCliente from './components/clientes/cadastrarCliente/cadastrarCliente.vue';
+import EditarCliente from './components/clientes/editarCliente/editarCliente.vue';
 
 // ROTAS
 const routes: Array<RouteRecordRaw> = [

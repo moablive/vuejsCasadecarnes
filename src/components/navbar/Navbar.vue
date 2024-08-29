@@ -30,7 +30,7 @@
         </div>
         <button
           class="text-white px-3 py-2 rounded-md text-sm font-medium hover:bg-gray-700 focus:outline-none"
-          @click="handleLogout"
+          @click="logout"
         >
           Logout
         </button>
@@ -39,27 +39,5 @@
   </nav>
 </template>
 
-<script lang="ts">
-import { defineComponent } from 'vue';
-import { useRouter } from 'vue-router';
-import { logout } from '@/utils/auth';
-
-export default defineComponent({
-  name: 'Navbar',
-  setup() {
-    const router = useRouter();
-    return {
-      router,
-    };
-  },
-  methods: {
-    handleLogout() {
-      logout(this.router);
-    },
-  },
-});
-</script>
-
-<style scoped>
-/* Estilos adicionais, se necessário */
-</style>
+<script lang="ts" src="./Navbar.ts"></script>
+<style src="./Navbar.css"></style>
