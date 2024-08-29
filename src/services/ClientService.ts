@@ -46,4 +46,9 @@ export default {
     deleteClient(id: number) {
         return apiClient.delete(`/${id}`);
     },
+
+    // Buscar o nome do vendedor pelo código
+    getNomeVendedor(codigoVendedor: number) {
+        return apiClient.get(`/vendedor/${codigoVendedor}`);
+    },
 };

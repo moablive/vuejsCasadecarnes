@@ -12,14 +12,15 @@
                         <th class="py-2 px-3 text-left">CNPJ</th>
                         <th class="py-2 px-3 text-left">Contato</th>
                         <th class="py-2 px-3 text-left">País</th>
-                        <th class="py-2 px-3 text-left">Estado</th>
+                        <th class="py-2 px-3 text-left">UF</th>
                         <th class="py-2 px-3 text-left">Cidade</th>
                         <th class="py-2 px-3 text-left">Bairro</th>
                         <th class="py-2 px-3 text-left">Rua/Av</th>
                         <th class="py-2 px-3 text-left">Número</th>
-                        <th class="py-2 px-3 text-left">Complemento</th>
+                        <th class="py-2 px-3 text-left">Comp</th>
                         <th class="py-2 px-3 text-left">CEP</th>
-                        <th class="py-2 px-3 text-left">Código TELECON</th>
+                        <th class="py-2 px-3 text-left">TELECON</th>
+                        <th class="py-2 px-3 text-left">Vendedor</th>
                         <th class="py-2 px-3 text-left">Ações</th>
                     </tr>
                 </thead>
@@ -39,6 +40,7 @@
                         <td class="py-2 px-3">{{ cliente.COMPLEMENTO }}</td>
                         <td class="py-2 px-3">{{ cliente.CEP }}</td>
                         <td class="py-2 px-3">{{ cliente.CODIGO_TELECON }}</td>
+                        <td class="py-2 px-3">{{ cliente.NOME_VENDEDOR }}</td>
                         <td class="py-2 px-3 flex space-x-2">
                             <button class="bg-blue-500 text-white px-3 py-1 rounded hover:bg-blue-600"
                                 @click="editClient(cliente.ID!)">
@@ -92,7 +94,17 @@ export default defineComponent({
         const fetchClients = async () => {
             try {
                 const response = await ClientService.getAllClients();
-                clientes.value = response.data;
+                const clientsData = response.data;
+
+                // Adiciona o nome do vendedor para cada cliente
+                for (const cliente of clientsData) {
+                    if (cliente.CODIGO_VENDEDOR) {
+                        const vendedorResponse = await ClientService.getNomeVendedor(cliente.CODIGO_VENDEDOR);
+                        cliente.NOME_VENDEDOR = vendedorResponse.data.nome;
+                    }
+                }
+
+                clientes.value = clientsData;
             } catch (error) {
                 console.error('Erro ao buscar clientes:', error);
             }
