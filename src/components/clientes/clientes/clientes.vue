@@ -15,8 +15,15 @@
                 />
             </div>
 
+            <!-- Spinner de carregamento -->
+            <div v-if="isLoading" class="flex justify-center items-center">
+                <div class="spinner-border animate-spin inline-block w-8 h-8 border-4 rounded-full" role="status">
+                    <span class="visually-hidden">Carregando...</span>
+                </div>
+            </div>
+
             <!-- Tabela responsiva -->
-            <div class="overflow-x-auto bg-white rounded-lg shadow">
+            <div v-else class="overflow-x-auto bg-white rounded-lg shadow">
                 <table class="min-w-full bg-white">
                     <thead class="bg-gray-800 text-white">
                         <tr>

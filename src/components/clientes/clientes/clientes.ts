@@ -12,6 +12,7 @@ export default defineComponent({
     setup() {
         const clientes = ref<Cliente[]>([]);
         const searchTerm = ref('');
+        const isLoading = ref(true); // Estado para controlar o carregamento
         const router = useRouter();
         const showModal = ref(false);
         const clienteIdParaDeletar = ref<number | null>(null);
@@ -25,7 +26,6 @@ export default defineComponent({
                     if (client.CODIGO_VENDEDOR) {
                         try {
                             const vendedorResponse = await ClientService.getNomeVendedor(client.CODIGO_VENDEDOR);
-                            // Acessando a propriedade "nome" com a mesma case do retorno da API
                             client.NOME_VENDEDOR = vendedorResponse.data?.nome || 'N/A';
                         } catch (vendedorError) {
                             console.error(`Erro ao buscar nome do vendedor para código ${client.CODIGO_VENDEDOR}:`, vendedorError);
@@ -39,6 +39,8 @@ export default defineComponent({
                 clientes.value = clients;
             } catch (error) {
                 console.error('Erro ao buscar clientes:', error);
+            } finally {
+                isLoading.value = false; // Finaliza o carregamento
             }
         };
 
@@ -97,6 +99,7 @@ export default defineComponent({
             closeModal,
             confirmDelete,
             showModal,
+            isLoading,
         };
     }
 });
