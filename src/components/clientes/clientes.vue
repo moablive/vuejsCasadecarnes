@@ -114,7 +114,7 @@ export default defineComponent({
         const confirmDelete = async () => {
             if (clienteIdParaDeletar.value !== null && clienteIdParaDeletar.value !== undefined) {
                 try {
-                    await ClientService.deleteClient(clienteIdParaDeletar.value!);
+                    await ClientService.deleteClient(clienteIdParaDeletar.value as number);
                     fetchClients(); // Atualiza a lista após a exclusão
                     closeModal();
                 } catch (error) {
