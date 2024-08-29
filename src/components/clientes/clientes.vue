@@ -41,11 +41,11 @@
                         <td class="py-2 px-3">{{ cliente.CODIGO_TELECON }}</td>
                         <td class="py-2 px-3 flex space-x-2">
                             <button class="bg-blue-500 text-white px-3 py-1 rounded hover:bg-blue-600"
-                                @click="editClient(cliente.ID)">
+                                @click="editClient(cliente.ID!)">
                                 Editar
                             </button>
                             <button class="bg-red-500 text-white px-3 py-1 rounded hover:bg-red-600"
-                                @click="openModal(cliente.ID)">
+                                @click="openModal(cliente.ID!)">
                                 Deletar
                             </button>
                         </td>
