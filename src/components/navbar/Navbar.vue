@@ -5,6 +5,7 @@
         LOGO
       </router-link>
       <div class="flex items-center space-x-4">
+        <!-- Menu Clientes -->
         <div class="relative group">
           <button
             class="text-white px-3 py-2 rounded-md text-sm font-medium focus:outline-none"
@@ -28,6 +29,33 @@
             </router-link>
           </div>
         </div>
+        
+        <!-- Menu Vendedores -->
+        <div class="relative group">
+          <button
+            class="text-white px-3 py-2 rounded-md text-sm font-medium focus:outline-none"
+          >
+            Vendedores
+          </button>
+          <div
+            class="absolute left-0 bg-white text-black shadow-lg rounded-md mt-2 py-2 opacity-0 group-hover:opacity-100 group-hover:translate-y-0 transition-opacity duration-300 ease-in-out pointer-events-auto"
+          >
+            <router-link
+              to="/vendedores"
+              class="block px-4 py-2 hover:bg-gray-100"
+            >
+              Listar Vendedores
+            </router-link>
+            <router-link
+              to="/cadastrar-vendedor"
+              class="block px-4 py-2 hover:bg-gray-100"
+            >
+              Cadastrar Vendedor
+            </router-link>
+          </div>
+        </div>
+
+        <!-- Btn Logout -->
         <button
           class="text-white px-3 py-2 rounded-md text-sm font-medium hover:bg-gray-700 focus:outline-none"
           @click="logout"
