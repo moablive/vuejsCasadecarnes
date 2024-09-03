@@ -1,8 +1,12 @@
 <template>
   <div>
     <Navbar />
-    <buscarProximosCincoDias />
+    <div class="content-container">
+      <BuscarProximosCincoDias />
+      <Map />
+    </div>
   </div>
 </template>
+
 <script lang="ts" src="./home.ts"></script>
 <style src="./home.css"></style>

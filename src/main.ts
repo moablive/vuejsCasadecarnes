@@ -5,6 +5,9 @@ import router from './router';
 // CSS Global
 import './style.css';
 
+// leaflet MAP
+import 'leaflet/dist/leaflet.css';
+
 const app = createApp(App);
 
 // Usando o router na aplicação

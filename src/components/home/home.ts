@@ -1,14 +1,13 @@
 import { defineComponent } from "vue";
 import Navbar from "../navbar/Navbar.vue";
-import buscarProximosCincoDias from "./buscarProximosCincoDias/buscarProximosCincoDias.vue";
+import BuscarProximosCincoDias from "./buscarProximosCincoDias/buscarProximosCincoDias.vue";
+import Map from "./map/map.vue";
 
 export default defineComponent({
   name: "Home",
   components: {
     Navbar,
-    buscarProximosCincoDias
+    BuscarProximosCincoDias,
+    Map,
   },
-  setup() {
-  },
-
 });

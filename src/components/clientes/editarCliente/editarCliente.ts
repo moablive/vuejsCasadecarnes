@@ -24,7 +24,10 @@ export default defineComponent({
             COMPLEMENTO: '',
             CEP: '',
             CODIGO_TELECON: null,
+            LATITUDE: null,
+            LONGITUDE: null,
         });
+
         const router = useRouter();
         const route = useRoute();
         const clientId = Number(route.params.id);

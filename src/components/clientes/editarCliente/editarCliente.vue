@@ -74,10 +74,22 @@
                             class="w-full p-2 border border-gray-300 rounded" placeholder="00000-000" maxlength="9" />
                     </div>
                 </div>
-                <div class="mb-6">
-                    <label for="codigo_telecon" class="block text-gray-700 font-semibold mb-2">Código TELECON</label>
-                    <input v-model="cliente.CODIGO_TELECON" type="text" id="codigo_telecon"
-                        class="w-full p-2 border border-gray-300 rounded" placeholder="Código TELECON" />
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                    <div>
+                        <label for="codigo_telecon" class="block text-gray-700 font-semibold mb-2">Código TELECON</label>
+                        <input v-model="cliente.CODIGO_TELECON" type="text" id="codigo_telecon"
+                            class="w-full p-2 border border-gray-300 rounded" placeholder="Código TELECON" />
+                    </div>
+                    <div>
+                        <label for="latitude" class="block text-gray-700 font-semibold mb-2">Latitude</label>
+                        <input v-model="cliente.LATITUDE" type="number" id="latitude"
+                            class="w-full p-2 border border-gray-300 rounded" placeholder="Latitude" step="any" />
+                    </div>
+                    <div>
+                        <label for="longitude" class="block text-gray-700 font-semibold mb-2">Longitude</label>
+                        <input v-model="cliente.LONGITUDE" type="number" id="longitude"
+                            class="w-full p-2 border border-gray-300 rounded" placeholder="Longitude" step="any" />
+                    </div>
                 </div>
                 <div class="text-center">
                     <button class="bg-green-500 text-white font-semibold py-2 px-4 rounded hover:bg-green-600 mr-2"
