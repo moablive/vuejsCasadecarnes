@@ -1,24 +1,20 @@
 <template>
-  <nav class="bg-gray-800 p-4 fixed w-full z-10 top-0 shadow">
-    <div class="container mx-auto flex items-center justify-between">
+  <nav class="bg-custom-red p-4 fixed w-full z-10 top-0 shadow">
+    <div class="container mx-auto flex items-center justify-between flex-wrap">
       <!-- Logo -->
       <router-link to="/home" class="text-white font-bold text-lg">
-        LOGO
+        <img src="../../assets/logo2.png" alt="Logo" class="h-8 w-auto">
       </router-link>
 
       <!-- Botão hambúrguer para mobile -->
-      <button
-        @click="isMenuOpen = !isMenuOpen"
-        class="text-white block md:hidden focus:outline-none"
-      >
+      <button @click="isMenuOpen = !isMenuOpen" class="text-white block md:hidden focus:outline-none">
         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-            d="M4 6h16M4 12h16m-7 6h7"></path>
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
         </svg>
       </button>
 
       <!-- Links do menu -->
-      <div :class="{'block': isMenuOpen, 'hidden': !isMenuOpen}" class="hidden md:flex items-center space-x-4">
+      <div :class="{ 'block': isMenuOpen, 'hidden': !isMenuOpen }" class="hidden md:flex items-center space-x-4">
         <!-- Menu Clientes -->
         <div class="relative group">
           <button class="text-white px-3 py-2 rounded-md text-sm font-medium focus:outline-none">
@@ -26,7 +22,7 @@
             Clientes
           </button>
           <div
-            class="absolute left-0 bg-white text-black shadow-lg rounded-md mt-2 py-2 hidden group-hover:block transition-opacity duration-300 ease-in-out">
+            class="absolute left-0 bg-white text-black shadow-lg rounded-md mt-2 py-2 opacity-0 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300 ease-in-out">
             <router-link to="/clientes" class="block px-4 py-2 hover:bg-gray-100">
               <UserGroupIcon class="w-5 h-5 inline-block mr-2" />
               Listar Clientes
@@ -45,7 +41,7 @@
             Vendedores
           </button>
           <div
-            class="absolute left-0 bg-white text-black shadow-lg rounded-md mt-2 py-2 hidden group-hover:block transition-opacity duration-300 ease-in-out">
+            class="absolute left-0 bg-white text-black shadow-lg rounded-md mt-2 py-2 opacity-0 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300 ease-in-out">
             <router-link to="/vendedores" class="block px-4 py-2 hover:bg-gray-100">
               <UserGroupIcon class="w-5 h-5 inline-block mr-2" />
               Listar Vendedores
@@ -64,7 +60,7 @@
             Eventos
           </button>
           <div
-            class="absolute left-0 bg-white text-black shadow-lg rounded-md mt-2 py-2 hidden group-hover:block transition-opacity duration-300 ease-in-out">
+            class="absolute left-0 bg-white text-black shadow-lg rounded-md mt-2 py-2 opacity-0 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300 ease-in-out">
             <router-link to="/eventos" class="block px-4 py-2 hover:bg-gray-100">
               <CalendarIcon class="w-5 h-5 inline-block mr-2" />
               Listar Eventos
@@ -73,7 +69,7 @@
         </div>
 
         <!-- Btn Logout -->
-        <button class="text-white px-3 py-2 rounded-md text-sm font-medium hover:bg-gray-700 focus:outline-none"
+        <button class="text-white px-3 py-2 rounded-md text-sm font-medium focus:outline-none hover:bg-custom-red-dark"
           @click="logout">
           <ArrowRightOnRectangleIcon class="w-5 h-5 inline-block" />
           Logout
@@ -82,7 +78,7 @@
     </div>
 
     <!-- Menu Mobile -->
-    <div :class="{'block': isMenuOpen, 'hidden': !isMenuOpen}" class="md:hidden">
+    <div :class="{ 'block': isMenuOpen, 'hidden': !isMenuOpen }" class="md:hidden">
       <div class="flex flex-col space-y-2 mt-4">
         <!-- Menu Clientes Mobile -->
         <router-link to="/clientes" class="text-white px-4 py-2 hover:bg-gray-700">
@@ -111,7 +107,7 @@
         </router-link>
 
         <!-- Logout Mobile -->
-        <button @click="logout" class="text-white px-4 py-2 hover:bg-gray-700 focus:outline-none">
+        <button @click="logout" class="text-white px-4 py-2 hover:bg-custom-red-dark focus:outline-none">
           <ArrowRightOnRectangleIcon class="w-5 h-5 inline-block mr-2" />
           Logout
         </button>
