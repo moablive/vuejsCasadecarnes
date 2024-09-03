@@ -1,4 +1,4 @@
-import { defineComponent } from 'vue';
+import { defineComponent, ref } from 'vue';
 import { useRouter } from 'vue-router';
 import { UserGroupIcon, UserIcon, BriefcaseIcon, CalendarIcon, ArrowRightOnRectangleIcon } from '@heroicons/vue/24/solid';
 
@@ -13,6 +13,7 @@ export default defineComponent({
   },
   setup() {
     const router = useRouter();
+    const isMenuOpen = ref(false);
 
     function logout() {
       localStorage.removeItem('token');
@@ -20,6 +21,7 @@ export default defineComponent({
     }
 
     return {
+      isMenuOpen,
       logout,
     };
   },

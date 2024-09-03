@@ -1,15 +1,14 @@
 import { defineComponent } from "vue";
 import Navbar from "../navbar/Navbar.vue";
+import buscarProximosCincoDias from "./buscarProximosCincoDias/buscarProximosCincoDias.vue";
 
 export default defineComponent({
   name: "Home",
   components: {
     Navbar,
+    buscarProximosCincoDias
   },
-  created() {
-    // Verifica se o token existe, se não, redireciona para login
-    if (!localStorage.getItem("token")) {
-      this.$router.push("/");
-    }
+  setup() {
   },
+
 });

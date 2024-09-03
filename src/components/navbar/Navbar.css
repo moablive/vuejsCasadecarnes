@@ -1,0 +1,10 @@
+/* Custom styles for mobile menu */
+@media (max-width: 768px) {
+    .hidden {
+        display: none;
+    }
+
+    .block {
+        display: block;
+    }
+}
