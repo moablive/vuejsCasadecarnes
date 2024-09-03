@@ -1,7 +1,20 @@
 import { defineComponent, ref, onMounted, computed } from 'vue';
 import * as L from 'leaflet';
+import 'leaflet/dist/leaflet.css';
 import ClientService from '../../../services/ClientService';
 import { Cliente } from '../../../interfaces/cliente';
+
+// Importa as URLs dos ícones
+import markerIcon from 'leaflet/dist/images/marker-icon.png';
+import markerIconRetina from 'leaflet/dist/images/marker-icon-2x.png';
+import markerShadow from 'leaflet/dist/images/marker-shadow.png';
+
+// Configura os ícones padrão do Leaflet para garantir que eles sejam exibidos corretamente
+L.Icon.Default.mergeOptions({
+  iconRetinaUrl: markerIconRetina,
+  iconUrl: markerIcon,
+  shadowUrl: markerShadow,
+});
 
 export default defineComponent({
   name: 'Map',
