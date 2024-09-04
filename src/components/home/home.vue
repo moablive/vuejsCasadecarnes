@@ -2,7 +2,7 @@
   <div>
     <Navbar />
     <div class="content-container">
-      <BuscarProximosCincoDias />
+      <ProximosVencimentos />
       <Map />
     </div>
   </div>

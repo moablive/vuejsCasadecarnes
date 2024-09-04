@@ -3,14 +3,14 @@ import eventoService from "../../../services/eventoService";
 import { Evento } from "../../../interfaces/evento";
 
 export default defineComponent({
-  name: "BuscarProximosCincoDias",
+  name: "ProximosVencimentos",
   setup() {
     const proximosEventos = ref<Evento[]>([]);
     const isLoading = ref(true);
 
     const fetchProximosEventos = async () => {
       try {
-        const response = await eventoService.getNextFiveEvents();
+        const response = await eventoService.getNextExpiration();
         proximosEventos.value = response.data;
       } catch (error) {
         console.error("Erro ao buscar eventos próximos:", error);

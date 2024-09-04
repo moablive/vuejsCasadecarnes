@@ -38,5 +38,5 @@
     </div>
 </template>
 
-<script lang="ts" src="./buscarProximosCincoDias.ts"></script>
-<style src="./buscarProximosCincoDias.css"></style>
+<script lang="ts" src="./ProximosVencimentos.ts"></script>
+<style src="./ProximosVencimentos.css"></style>

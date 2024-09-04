@@ -28,8 +28,8 @@ export default {
     getEventoById(id: number) {
         return apiClient.get(`/getbyid/${id}`);
     },
-    getNextFiveEvents() {
-        return apiClient.get('/nextFive');
+    getNextExpiration() {
+        return apiClient.get('/getNextExpiration');
     },
     updateEvento(id: number, evento: Partial<Evento>) {
         return apiClient.put(`/update/${id}`, evento);
