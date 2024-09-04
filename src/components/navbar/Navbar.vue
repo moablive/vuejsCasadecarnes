@@ -16,13 +16,14 @@
       <!-- Links do menu -->
       <div :class="{ 'block': isMenuOpen, 'hidden': !isMenuOpen }" class="hidden md:flex items-center space-x-4">
         <!-- Menu Clientes -->
-        <div class="relative group">
-          <button class="text-white px-3 py-2 rounded-md text-sm font-medium focus:outline-none">
+        <div class="relative">
+          <button @click="toggleMenu('clientes')"
+            class="text-white px-3 py-2 rounded-md text-sm font-medium focus:outline-none">
             <UserGroupIcon class="w-5 h-5 inline-block mr-2" />
             Clientes
           </button>
-          <div
-            class="absolute left-0 bg-white text-black shadow-lg rounded-md mt-2 py-2 opacity-0 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300 ease-in-out">
+          <div v-show="activeMenu === 'clientes'"
+            class="absolute left-0 bg-white text-black shadow-lg rounded-md mt-2 py-2 transition-opacity duration-300 ease-in-out">
             <router-link to="/clientes" class="block px-4 py-2 hover:bg-gray-100">
               <UserGroupIcon class="w-5 h-5 inline-block mr-2" />
               Listar Clientes
@@ -35,13 +36,14 @@
         </div>
 
         <!-- Menu Vendedores -->
-        <div class="relative group">
-          <button class="text-white px-3 py-2 rounded-md text-sm font-medium focus:outline-none">
+        <div class="relative">
+          <button @click="toggleMenu('vendedores')"
+            class="text-white px-3 py-2 rounded-md text-sm font-medium focus:outline-none">
             <BriefcaseIcon class="w-5 h-5 inline-block mr-2" />
             Vendedores
           </button>
-          <div
-            class="absolute left-0 bg-white text-black shadow-lg rounded-md mt-2 py-2 opacity-0 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300 ease-in-out">
+          <div v-show="activeMenu === 'vendedores'"
+            class="absolute left-0 bg-white text-black shadow-lg rounded-md mt-2 py-2 transition-opacity duration-300 ease-in-out">
             <router-link to="/vendedores" class="block px-4 py-2 hover:bg-gray-100">
               <UserGroupIcon class="w-5 h-5 inline-block mr-2" />
               Listar Vendedores
@@ -54,13 +56,14 @@
         </div>
 
         <!-- Menu Eventos -->
-        <div class="relative group">
-          <button class="text-white px-3 py-2 rounded-md text-sm font-medium focus:outline-none">
+        <div class="relative">
+          <button @click="toggleMenu('eventos')"
+            class="text-white px-3 py-2 rounded-md text-sm font-medium focus:outline-none">
             <CalendarIcon class="w-5 h-5 inline-block mr-2" />
             Eventos
           </button>
-          <div
-            class="absolute left-0 bg-white text-black shadow-lg rounded-md mt-2 py-2 opacity-0 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300 ease-in-out">
+          <div v-show="activeMenu === 'eventos'"
+            class="absolute left-0 bg-white text-black shadow-lg rounded-md mt-2 py-2 transition-opacity duration-300 ease-in-out">
             <router-link to="/eventos" class="block px-4 py-2 hover:bg-gray-100">
               <CalendarIcon class="w-5 h-5 inline-block mr-2" />
               Listar Eventos
@@ -69,13 +72,14 @@
         </div>
 
         <!-- Menu Produtos -->
-        <div class="relative group">
-          <button class="text-white px-3 py-2 rounded-md text-sm font-medium focus:outline-none">
+        <div class="relative">
+          <button @click="toggleMenu('produtos')"
+            class="text-white px-3 py-2 rounded-md text-sm font-medium focus:outline-none">
             <TagIcon class="w-5 h-5 inline-block mr-2" />
             Produtos
           </button>
-          <div
-            class="absolute left-0 bg-white text-black shadow-lg rounded-md mt-2 py-2 opacity-0 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300 ease-in-out">
+          <div v-show="activeMenu === 'produtos'"
+            class="absolute left-0 bg-white text-black shadow-lg rounded-md mt-2 py-2 transition-opacity duration-300 ease-in-out">
             <router-link to="/produtos" class="block px-4 py-2 hover:bg-gray-100">
               <TagIcon class="w-5 h-5 inline-block mr-2" />
               Listar Produtos

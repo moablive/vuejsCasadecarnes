@@ -22,7 +22,7 @@ import Eventos from './components/eventos/eventos/eventos.vue';
 // Components de Produto
 import Produtos from './components/produtos/produtos/produtos.vue';
 import CadastrarProduto from './components/produtos/cadastrarProduto/cadastrarProduto.vue';
-//import EditarProduto from '';
+import EditarProduto from './components/produtos/editarProduto/editarProduto.vue';
 
 
 // ROTAS
@@ -38,7 +38,7 @@ const routes: Array<RouteRecordRaw> = [
   { path: '/eventos', name: 'Eventos', component: Eventos },
   { path: '/produtos', name: 'Produtos', component: Produtos },
   { path: '/cadastrar-produto', name: 'CadastrarProduto', component: CadastrarProduto },
-  //{ path: '/editar-produto/:id', name: 'EditarProduto', component: EditarProduto, props: true },
+  { path: '/editar-produto/:id', name: 'EditarProduto', component: EditarProduto, props: true },
 ];
 const router = createRouter({
   history: createWebHistory(),

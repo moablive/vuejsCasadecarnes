@@ -2,6 +2,7 @@ import { defineComponent, ref, onMounted } from "vue";
 import ProdutoService from "../../../services/produtoService";
 import { Produto } from "../../../interfaces/produto";
 import Navbar from "../../navbar/Navbar.vue";
+import { useRouter } from "vue-router";
 import {
   CheckIcon,
   ExclamationTriangleIcon,
@@ -33,7 +34,7 @@ export default defineComponent({
     const searchDescricao = ref("");
     const searchCodigoProduto = ref("");
     const produtoIdParaDeletar = ref<number | null>(null);
-    const produtoIdParaEditar = ref<number | null>(null);
+    const router = useRouter();
 
     const fetchProdutos = async () => {
       try {
@@ -92,8 +93,7 @@ export default defineComponent({
 
     const editProduto = (id: number | undefined) => {
       if (id) {
-        produtoIdParaEditar.value = id;
-        // Lógica para redirecionar para a página de edição de produto
+        router.push(`/editar-produto/${id}`);
       }
     };
 

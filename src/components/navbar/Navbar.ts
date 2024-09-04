@@ -24,6 +24,11 @@ export default defineComponent({
   setup() {
     const router = useRouter();
     const isMenuOpen = ref(false);
+    const activeMenu = ref<string | null>(null);
+
+    const toggleMenu = (menuName: string) => {
+      activeMenu.value = activeMenu.value === menuName ? null : menuName;
+    };
 
     function logout() {
       localStorage.removeItem("token");
@@ -32,6 +37,8 @@ export default defineComponent({
 
     return {
       isMenuOpen,
+      activeMenu,
+      toggleMenu,
       logout,
     };
   },

@@ -51,6 +51,7 @@
                         <tr>
                             <th class="py-2 px-3 text-left">Código</th>
                             <th class="py-2 px-3 text-left">Descrição</th>
+                            <th class="py-2 px-3 text-left">Categoria</th>
                             <th class="py-2 px-3 text-left">Preço</th>
                             <th class="py-2 px-3 text-left">Ações</th>
                         </tr>
@@ -60,7 +61,8 @@
                             :class="index % 2 === 0 ? 'bg-gray-100' : 'bg-white'" class="border-b">
                             <td class="py-2 px-3">{{ produto.codigo_produto }}</td>
                             <td class="py-2 px-3">{{ produto.descricao }}</td>
-                            <td class="py-2 px-3">{{ produto.valor_venda }}</td>
+                            <td class="py-2 px-3">{{ produto.categoria }}</td>
+                            <td class="py-2 px-3">R$: {{ produto.valor_venda }}</td>
                             <td class="py-2 px-3 flex space-x-2">
                                 <button class="bg-blue-500 text-white px-3 py-1 rounded hover:bg-blue-600"
                                     @click="editProduto(produto.id)">

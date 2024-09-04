@@ -19,17 +19,19 @@
 }
 
 /* Ensure the submenu remains visible when hovering over it */
-.group:hover .group-hover\\:block {
+.group:hover .group-hover\:block {
     display: block;
     opacity: 1;
+    pointer-events: auto; /* Permite interação somente quando visível */
 }
 
-.group-hover\\:block {
+.group-hover\:block {
     display: none;
     opacity: 0;
     transition: opacity 0.3s ease-in-out;
+    pointer-events: none; /* Impede interação quando não visível */
 }
 
-.group:hover .group-hover\\:translate-y-0 {
+.group:hover .group-hover\:translate-y-0 {
     transform: translateY(0);
 }
