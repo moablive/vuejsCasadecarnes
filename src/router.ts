@@ -19,6 +19,12 @@ import CadastrarVendedor from './components/vendedores/cadastrarVendedor/cadastr
 // Components de Evento
 import Eventos from './components/eventos/eventos/eventos.vue';
 
+// Components de Produto
+import Produtos from './components/produtos/produtos/produtos.vue';
+import CadastrarProduto from './components/produtos/cadastrarProduto/cadastrarProduto.vue';
+//import EditarProduto from '';
+
+
 // ROTAS
 const routes: Array<RouteRecordRaw> = [
   { path: '/', name: 'login', component: Login },
@@ -30,8 +36,10 @@ const routes: Array<RouteRecordRaw> = [
   { path: '/editar-vendedor/:id',name: 'EditarVendedor',component: EditarVendedor,props: true },
   { path: '/cadastrar-vendedor', name: 'CadastrarVendedor', component: CadastrarVendedor },
   { path: '/eventos', name: 'Eventos', component: Eventos },
+  { path: '/produtos', name: 'Produtos', component: Produtos },
+  { path: '/cadastrar-produto', name: 'CadastrarProduto', component: CadastrarProduto },
+  //{ path: '/editar-produto/:id', name: 'EditarProduto', component: EditarProduto, props: true },
 ];
-
 const router = createRouter({
   history: createWebHistory(),
   routes,

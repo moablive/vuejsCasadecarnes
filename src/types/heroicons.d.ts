@@ -10,4 +10,10 @@ declare module '@heroicons/vue/24/solid' {
   export const ExclamationTriangleIcon: DefineComponent;
   export const TrashIcon: DefineComponent;
   export const FunnelIcon: DefineComponent;
+  export const PencilIcon: DefineComponent;
+  export const TagIcon: DefineComponent; 
+  export const PlusIcon: DefineComponent;
+  export const MagnifyingGlassIcon: DefineComponent;
+  export const IdentificationIcon: DefineComponent;
+  export const ClipboardDocumentListIcon: DefineComponent;
 }

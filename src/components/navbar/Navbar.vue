@@ -68,6 +68,25 @@
           </div>
         </div>
 
+        <!-- Menu Produtos -->
+        <div class="relative group">
+          <button class="text-white px-3 py-2 rounded-md text-sm font-medium focus:outline-none">
+            <TagIcon class="w-5 h-5 inline-block mr-2" />
+            Produtos
+          </button>
+          <div
+            class="absolute left-0 bg-white text-black shadow-lg rounded-md mt-2 py-2 opacity-0 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300 ease-in-out">
+            <router-link to="/produtos" class="block px-4 py-2 hover:bg-gray-100">
+              <TagIcon class="w-5 h-5 inline-block mr-2" />
+              Listar Produtos
+            </router-link>
+            <router-link to="/cadastrar-produto" class="block px-4 py-2 hover:bg-gray-100">
+              <PlusIcon class="w-5 h-5 inline-block mr-2" />
+              Cadastrar Produto
+            </router-link>
+          </div>
+        </div>
+
         <!-- Btn Logout -->
         <button class="text-white px-3 py-2 rounded-md text-sm font-medium focus:outline-none hover:bg-custom-red-dark"
           @click="logout">
@@ -106,6 +125,16 @@
           Listar Eventos
         </router-link>
 
+        <!-- Menu Produtos Mobile -->
+        <router-link to="/produtos" class="text-white px-4 py-2 hover:bg-gray-700">
+          <TagIcon class="w-5 h-5 inline-block mr-2" />
+          Listar Produtos
+        </router-link>
+        <router-link to="/cadastrar-produto" class="text-white px-4 py-2 hover:bg-gray-700">
+          <PlusIcon class="w-5 h-5 inline-block mr-2" />
+          Cadastrar Produto
+        </router-link>
+
         <!-- Logout Mobile -->
         <button @click="logout" class="text-white px-4 py-2 hover:bg-custom-red-dark focus:outline-none">
           <ArrowRightOnRectangleIcon class="w-5 h-5 inline-block mr-2" />
@@ -115,6 +144,7 @@
     </div>
   </nav>
 </template>
+
 
 <script lang="ts" src="./Navbar.ts"></script>
 <style src="./Navbar.css"></style>

@@ -50,12 +50,6 @@ export default defineComponent({
       }
     };
 
-    const editEvento = (id: number | undefined) => {
-      if (id) {
-        // Lógica para redirecionar para a página de edição de evento
-      }
-    };
-
     const confirmDelete = (id: number | undefined) => {
       if (id) {
         eventoIdParaDeletar.value = id;
@@ -110,7 +104,6 @@ export default defineComponent({
       confirmDelete,
       deleteEvento,
       closeModal,
-      editEvento,
       marcarComoPago,
       marcarComoNaoPago,
       selectedMonth,
