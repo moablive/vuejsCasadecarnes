@@ -1,14 +1,15 @@
-import { useRouter } from 'vue-router';
 import { defineComponent, ref, onMounted } from "vue";
 import VendedorService from "../../../services/vendedorService";
 import { Vendedor } from "../../../interfaces/vendedor";
 import Navbar from "../../navbar/Navbar.vue";
 import router from '../../../router';
+import BestPartner from "./bestPartner/bestPartner.vue";
 
 export default defineComponent({
   name: "ListarVendedores",
   components: {
     Navbar,
+    BestPartner
   },
   setup() {
     const vendedores = ref<Vendedor[]>([]);

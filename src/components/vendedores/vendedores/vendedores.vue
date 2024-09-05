@@ -55,6 +55,7 @@
                 <div class="fixed inset-0 bg-black opacity-50" @click="closeModal"></div>
             </div>
         </div>
+        <bestPartner />
     </div>
 </template>
 

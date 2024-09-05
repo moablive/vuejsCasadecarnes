@@ -1,29 +1,39 @@
-import { defineComponent, ref, onMounted } from "vue";
+import { defineComponent, ref, computed, onMounted } from "vue";
 import EventoService from "../../../services/eventoService";
 import { Evento } from "../../../interfaces/evento";
-import {
-    CheckIcon,
-    ExclamationTriangleIcon
-  } from "@heroicons/vue/24/solid";
+import { CheckIcon, ExclamationTriangleIcon } from "@heroicons/vue/24/solid";
 
 export default defineComponent({
   name: "AllPaidUnpaid",
   components: {
     CheckIcon,
-    ExclamationTriangleIcon
+    ExclamationTriangleIcon,
   },
   setup() {
     const paidEvents = ref<Evento[]>([]);
     const unpaidEvents = ref<Evento[]>([]);
     const isLoading = ref(true);
-    const showPaidEvents = ref(false); // Inicializa minimizado
-    const showUnpaidEvents = ref(false); // Inicializa minimizado
 
+    // Propriedade computada para somar o valor total dos eventos pagos
+    const totalValorPago = computed(() => {
+      return paidEvents.value.reduce((total, evento) => {
+        return total + (evento.ValorNF || 0); // Somar o valor se existir
+      }, 0);
+    });
+
+    // Propriedade computada para somar o valor total dos eventos não pagos
+    const totalValorNaoPago = computed(() => {
+      return unpaidEvents.value.reduce((total, evento) => {
+        return total + (evento.ValorNF || 0); // Somar o valor se existir
+      }, 0);
+    });
+
+    // Função para buscar eventos pagos
     const fetchPaidEvents = async () => {
       try {
         isLoading.value = true;
         const response = await EventoService.getAllPaidEvents();
-        paidEvents.value = response.data;
+        paidEvents.value = response.data; // Atribuir diretamente os eventos pagos
       } catch (error) {
         console.error("Erro ao buscar eventos pagos:", error);
       } finally {
@@ -31,6 +41,7 @@ export default defineComponent({
       }
     };
 
+    // Função para buscar eventos não pagos
     const fetchUnpaidEvents = async () => {
       try {
         isLoading.value = true;
@@ -43,14 +54,6 @@ export default defineComponent({
       }
     };
 
-    const togglePaidVisibility = () => {
-      showPaidEvents.value = !showPaidEvents.value;
-    };
-
-    const toggleUnpaidVisibility = () => {
-      showUnpaidEvents.value = !showUnpaidEvents.value;
-    };
-
     onMounted(() => {
       fetchPaidEvents();
       fetchUnpaidEvents();
@@ -60,10 +63,8 @@ export default defineComponent({
       paidEvents,
       unpaidEvents,
       isLoading,
-      showPaidEvents,
-      showUnpaidEvents,
-      togglePaidVisibility,
-      toggleUnpaidVisibility,
+      totalValorPago,
+      totalValorNaoPago,
     };
   },
 });

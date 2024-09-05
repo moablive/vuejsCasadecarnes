@@ -16,4 +16,6 @@ declare module '@heroicons/vue/24/solid' {
   export const MagnifyingGlassIcon: DefineComponent;
   export const IdentificationIcon: DefineComponent;
   export const ClipboardDocumentListIcon: DefineComponent;
+  export const UserCircleIcon: DefineComponent;
+  export const PhoneIcon: DefineComponent;
 }

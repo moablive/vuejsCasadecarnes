@@ -28,6 +28,12 @@
                                 {{ evento.status_pagamento }}
                             </p>
                         </div>
+                        <div class="flex justify-between mt-4">
+                            <p class="text-lg">
+                                <strong>Valor da NFe:</strong>
+                                {{ evento.ValorNF ? evento.ValorNF.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' }) : "N/A" }}
+                            </p>
+                        </div>
                     </li>
                 </ul>
                 <p v-else class="text-gray-800 text-center text-xl">

@@ -8,7 +8,8 @@
             <div class="flex space-x-4 mb-4">
                 <div>
                     <label for="month" class="block text-sm font-medium text-gray-700">Mês</label>
-                    <select v-model="selectedMonth" id="month" class="mt-1 block w-full pl-3 pr-10 py-2 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                    <select v-model="selectedMonth" id="month"
+                        class="mt-1 block w-full pl-3 pr-10 py-2 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
                         <option v-for="month in months" :key="month.value" :value="month.value">
                             {{ month.label }}
                         </option>
@@ -16,13 +17,15 @@
                 </div>
                 <div>
                     <label for="year" class="block text-sm font-medium text-gray-700">Ano</label>
-                    <select v-model="selectedYear" id="year" class="mt-1 block w-full pl-3 pr-10 py-2 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                    <select v-model="selectedYear" id="year"
+                        class="mt-1 block w-full pl-3 pr-10 py-2 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
                         <option v-for="year in years" :key="year" :value="year">
                             {{ year }}
                         </option>
                     </select>
                 </div>
-                <button @click="fetchEventos" class="self-end bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 flex items-center">
+                <button @click="fetchEventos"
+                    class="self-end bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 flex items-center">
                     <FunnelIcon class="w-5 h-5 mr-2" />
                     Filtrar
                 </button>
@@ -42,6 +45,7 @@
                             <th class="py-2 px-3 text-left">Razão Social</th>
                             <th class="py-2 px-3 text-left">Data de Emissão</th>
                             <th class="py-2 px-3 text-left">Data de Vencimento</th>
+                            <th class="py-2 px-3 text-left">Valor NF</th> <!-- Adicionei a coluna de Valor NF -->
                             <th class="py-2 px-3 text-left">Status</th>
                             <th class="py-2 px-3 text-left">Ações</th>
                         </tr>
@@ -51,8 +55,13 @@
                             :class="['border-b', index % 2 === 0 ? 'bg-gray-100' : 'bg-white', evento.status_pagamento === 'pago' ? 'bg-green-100' : evento.status_pagamento === 'não pago' ? 'bg-red-100' : '']">
                             <td class="py-2 px-3">{{ evento.TituloEvento }}</td>
                             <td class="py-2 px-3">{{ evento.RazaoSocial }}</td>
-                            <td class="py-2 px-3">{{ evento.DataEmissao ? new Date(evento.DataEmissao).toLocaleDateString() : 'N/A' }}</td>
-                            <td class="py-2 px-3">{{ evento.DataVencimento ? new Date(evento.DataVencimento).toLocaleDateString() : 'N/A' }}</td>
+                            <td class="py-2 px-3">{{ evento.DataEmissao ? new
+                                Date(evento.DataEmissao).toLocaleDateString() : 'N/A' }}</td>
+                            <td class="py-2 px-3">{{ evento.DataVencimento ? new
+                                Date(evento.DataVencimento).toLocaleDateString() : 'N/A' }}</td>
+                            <td class="py-2 px-3">{{ evento.ValorNF ? evento.ValorNF.toLocaleString('pt-BR', {
+                                style:
+                                    'currency', currency: 'BRL' }) : 'N/A' }}</td> <!-- Mostrando Valor NF formatado -->
                             <td class="py-2 px-3">{{ evento.status_pagamento }}</td>
                             <td class="py-2 px-3 flex space-x-2">
                                 <button v-if="evento.status_pagamento !== 'pago'"
@@ -92,5 +101,6 @@
         </div>
     </div>
 </template>
+
 <script lang="ts" src="./eventos.ts"></script>
 <style lang="css" src="./eventos.css"></style>
