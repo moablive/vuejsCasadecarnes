@@ -1,52 +1,54 @@
-import axios from 'axios';
+import apiClient from './apiClient';
 import { Evento } from '../interfaces/evento';
 
-const apiClient = axios.create({
-    baseURL: `${import.meta.env.VITE_API_URL}/api/eventos`,
-    headers: {
-        'Content-Type': 'application/json',
-    },
-});
-
-apiClient.interceptors.request.use(config => {
-    const token = localStorage.getItem('token');
-    if (token) {
-        config.headers.Authorization = `Bearer ${token}`;
-    }
-    return config;
-}, error => {
-    return Promise.reject(error);
-});
-
 export default {
+    // Buscar todos os eventos
     getAllEventos() {
-        return apiClient.get('/getAll');
+        return apiClient.get('/api/eventos/getAll');
     },
-    getAllpaidEvents() {
-        return apiClient.get('/getAll/paidEvents');
+
+    // Buscar todos os eventos pagos
+    getAllPaidEvents() {
+        return apiClient.get('/api/eventos/getAll/paidEvents');
     },
-    getAllunpaidEvents() {
-        return apiClient.get('/getAll/unpaidEvents');
+
+    // Buscar todos os eventos não pagos
+    getAllUnpaidEvents() {
+        return apiClient.get('/api/eventos/getAll/unpaidEvents');
     },
+
+    // Buscar eventos por mês e ano
     getEventosByMonthAndYear(month: string, year: string) {
-        return apiClient.get(`/list/mes/${month}/${year}`);
+        return apiClient.get(`/api/eventos/list/mes/${month}/${year}`);
     },
-    getEventoById(id: number) {
-        return apiClient.get(`/getbyid/${id}`);
-    },
+
+    // Buscar os próximos eventos que vencem nos próximos 5 dias
     getNextExpiration() {
-        return apiClient.get('/getNextExpiration');
+        return apiClient.get('/api/eventos/getNextExpiration');
     },
+
+    // Buscar um evento por ID
+    getEventoById(id: number) {
+        return apiClient.get(`/api/eventos/getbyid/${id}`);
+    },
+
+    // Atualizar um evento
     updateEvento(id: number, evento: Partial<Evento>) {
-        return apiClient.put(`/update/${id}`, evento);
+        return apiClient.put(`/api/eventos/update/${id}`, evento);
     },
+
+    // Deletar um evento
     deleteEvento(id: number) {
-        return apiClient.delete(`/delete/${id}`);
+        return apiClient.delete(`/api/eventos/delete/${id}`);
     },
+
+    // Marcar um evento como pago
     marcarEventoComoPago(id: number) {
-        return apiClient.put(`/marcarComoPago/${id}`);
+        return apiClient.put(`/api/eventos/marcarComoPago/${id}`);
     },
+
+    // Marcar um evento como não pago
     marcarEventoComoNaoPago(id: number) {
-        return apiClient.put(`/marcarComoNaoPago/${id}`);
+        return apiClient.put(`/api/eventos/marcarComoNaoPago/${id}`);
     },
 };

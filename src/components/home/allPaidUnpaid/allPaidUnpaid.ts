@@ -22,7 +22,7 @@ export default defineComponent({
     const fetchPaidEvents = async () => {
       try {
         isLoading.value = true;
-        const response = await EventoService.getAllpaidEvents();
+        const response = await EventoService.getAllPaidEvents();
         paidEvents.value = response.data;
       } catch (error) {
         console.error("Erro ao buscar eventos pagos:", error);
@@ -34,7 +34,7 @@ export default defineComponent({
     const fetchUnpaidEvents = async () => {
       try {
         isLoading.value = true;
-        const response = await EventoService.getAllunpaidEvents();
+        const response = await EventoService.getAllUnpaidEvents();
         unpaidEvents.value = response.data;
       } catch (error) {
         console.error("Erro ao buscar eventos não pagos:", error);

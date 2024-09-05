@@ -5,13 +5,13 @@
             <h1 class="text-2xl font-bold mb-4">Produtos</h1>
 
             <!-- Área de busca -->
-            <div class="flex space-x-4 mb-4">
+            <div class="flex flex-col md:flex-row md:items-center space-y-4 md:space-y-0 md:space-x-2 mb-4 custom-search-container">
 
                 <!-- Busca por Descrição -->
-                <div class="flex items-center space-x-2">
+                <div class="flex flex-col md:flex-row items-center space-y-2 md:space-y-0 md:space-x-2 w-full md:w-auto">
                     <input v-model="searchDescricao" placeholder="Buscar por descrição"
-                        class="border rounded px-3 py-2" />
-                    <button class="bg-blue-500 text-white px-3 py-2 rounded hover:bg-blue-600 flex items-center"
+                        class="border rounded px-3 py-2 w-full md:w-auto" />
+                    <button class="bg-blue-500 text-white px-3 py-2 rounded hover:bg-blue-600 flex items-center w-full md:w-auto"
                         @click="buscarPorDescricao">
                         <MagnifyingGlassIcon class="w-5 h-5 inline-block mr-2" />
                         Buscar por Descrição
@@ -19,10 +19,10 @@
                 </div>
 
                 <!-- Busca por Código -->
-                <div class="flex items-center space-x-2">
+                <div class="flex flex-col md:flex-row items-center space-y-2 md:space-y-0 md:space-x-2 w-full md:w-auto">
                     <input v-model="searchCodigoProduto" placeholder="Buscar por código"
-                        class="border rounded px-3 py-2" />
-                    <button class="bg-green-500 text-white px-3 py-2 rounded hover:bg-green-600 flex items-center"
+                        class="border rounded px-3 py-2 w-full md:w-auto" />
+                    <button class="bg-green-500 text-white px-3 py-2 rounded hover:bg-green-600 flex items-center w-full md:w-auto"
                         @click="buscarPorCodigo">
                         <IdentificationIcon class="w-5 h-5 inline-block mr-2" />
                         Buscar por Código
@@ -30,8 +30,8 @@
                 </div>
 
                 <!-- Botão para obter todos os produtos -->
-                <div class="flex items-center">
-                    <button class="bg-gray-500 text-white px-3 py-2 rounded hover:bg-gray-600 flex items-center"
+                <div class="flex items-center w-full md:w-auto">
+                    <button class="bg-gray-500 text-white px-3 py-2 rounded hover:bg-gray-600 flex items-center w-full md:w-auto"
                         @click="obterTodosProdutos">
                         <ClipboardDocumentListIcon class="w-5 h-5 inline-block mr-2" />
                         Obter Todos

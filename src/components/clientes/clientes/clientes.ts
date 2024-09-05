@@ -10,22 +10,24 @@ export default defineComponent({
         Navbar,
     },
     setup() {
-        const clientes = ref<Cliente[]>([]);
+        const clientes = ref<Cliente[]>([]);  // Usa a tipagem correta de Cliente[]
         const searchTerm = ref('');
         const isLoading = ref(true); // Estado para controlar o carregamento
         const router = useRouter();
         const showModal = ref(false);
         const clienteIdParaDeletar = ref<number | null>(null);
 
+        // Função para buscar clientes e nomes de vendedores
         const fetchClients = async () => {
             try {
                 const response = await ClientService.getAllClients();
-                const clients = response.data;
-        
-                for (const client of clients) {
+                const clients: Cliente[] = response.data;  // Define o tipo como Cliente[]
+
+                // Utiliza Promise.all para otimizar a busca dos nomes dos vendedores
+                await Promise.all(clients.map(async (client: Cliente) => {
                     if (client.CODIGO_VENDEDOR) {
                         try {
-                            const vendedorResponse = await ClientService.getNomeVendedor(client.CODIGO_VENDEDOR);
+                            const vendedorResponse = await ClientService.getVendedorNomeById(client.CODIGO_VENDEDOR);
                             client.NOME_VENDEDOR = vendedorResponse.data?.nome || 'N/A';
                         } catch (vendedorError) {
                             console.error(`Erro ao buscar nome do vendedor para código ${client.CODIGO_VENDEDOR}:`, vendedorError);
@@ -34,8 +36,8 @@ export default defineComponent({
                     } else {
                         client.NOME_VENDEDOR = 'N/A';
                     }
-                }
-        
+                }));
+
                 clientes.value = clients;
             } catch (error) {
                 console.error('Erro ao buscar clientes:', error);
@@ -84,7 +86,7 @@ export default defineComponent({
         });
 
         const filterClients = () => {
-            // This triggers reactivity for filteredClientes computed property
+            // Ativa a reatividade para a propriedade filteredClientes
         };
 
         onMounted(fetchClients);
