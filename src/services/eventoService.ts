@@ -22,6 +22,12 @@ export default {
     getAllEventos() {
         return apiClient.get('/getAll');
     },
+    getAllpaidEvents() {
+        return apiClient.get('/getAll/paidEvents');
+    },
+    getAllunpaidEvents() {
+        return apiClient.get('/getAll/unpaidEvents');
+    },
     getEventosByMonthAndYear(month: string, year: string) {
         return apiClient.get(`/list/mes/${month}/${year}`);
     },

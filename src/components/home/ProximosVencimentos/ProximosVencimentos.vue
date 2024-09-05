@@ -6,8 +6,8 @@
                 <div class="loader ease-linear rounded-full border-8 border-t-8 border-gray-200 h-16 w-16"></div>
             </div>
             <div v-else>
-                <ul v-if="proximosEventos.length > 0">
-                    <li v-for="evento in proximosEventos" :key="evento.Id"
+                <ul v-if="proximosEventos.length > 0" class="max-h-64 overflow-y-auto">
+                    <li v-for="(evento, index) in proximosEventos.slice(0, 5)" :key="evento.Id"
                         class="mb-4 p-4 bg-gray-100 text-gray-800 rounded-lg shadow-md">
                         <h3 class="text-2xl font-semibold mb-2">
                             {{ evento.TituloEvento }}
@@ -18,7 +18,7 @@
                                 {{
                                     evento.DataVencimento
                                         ? new Date(evento.DataVencimento).toLocaleDateString()
-                                : "N/A"
+                                        : "N/A"
                                 }}
                             </p>
                             <p :class="{

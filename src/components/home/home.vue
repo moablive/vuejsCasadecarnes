@@ -3,6 +3,7 @@
     <Navbar />
     <div class="content-container">
       <ProximosVencimentos />
+      <allPaidUnpaid />
       <Map />
     </div>
   </div>
