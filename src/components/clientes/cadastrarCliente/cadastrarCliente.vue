@@ -11,21 +11,33 @@
                             class="w-full p-2 border border-gray-300 rounded" placeholder="Nome do Cliente" maxlength="255" required />
                     </div>
                     <div>
+                        <label for="apelido" class="block text-gray-700 font-semibold mb-2">Apelido</label>
+                        <input v-model="cliente.APELIDO" type="text" id="apelido"
+                            class="w-full p-2 border border-gray-300 rounded" placeholder="Apelido do Cliente" maxlength="255" />
+                    </div>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                    <div>
                         <label for="email" class="block text-gray-700 font-semibold mb-2">Email</label>
                         <input v-model="cliente.EMAIL" type="email" id="email"
                             class="w-full p-2 border border-gray-300 rounded" placeholder="Email do Cliente" maxlength="255" required />
                     </div>
-                </div>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
                     <div>
                         <label for="cnpj" class="block text-gray-700 font-semibold mb-2">CNPJ</label>
                         <input v-model="cliente.CNPJ" type="text" id="cnpj"
                             class="w-full p-2 border border-gray-300 rounded" placeholder="00.000.000/0000-00" maxlength="14" />
                     </div>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
                     <div>
                         <label for="contato" class="block text-gray-700 font-semibold mb-2">Contato</label>
                         <input v-model="cliente.CONTATO" type="text" id="contato"
                             class="w-full p-2 border border-gray-300 rounded" placeholder="Telefone de Contato" maxlength="20" />
+                    </div>
+                    <div>
+                        <label for="codigo_telecon" class="block text-gray-700 font-semibold mb-2">Código TELECON</label>
+                        <input v-model="cliente.CODIGO_TELECON" type="text" id="codigo_telecon"
+                            class="w-full p-2 border border-gray-300 rounded" placeholder="Código TELECON" />
                     </div>
                 </div>
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
@@ -85,11 +97,6 @@
                         <input v-model="cliente.LONGITUDE" type="number" id="longitude"
                             class="w-full p-2 border border-gray-300 rounded" placeholder="Longitude" step="0.000001" />
                     </div>
-                </div>
-                <div class="mb-6">
-                    <label for="codigo_telecon" class="block text-gray-700 font-semibold mb-2">Código TELECON</label>
-                    <input v-model="cliente.CODIGO_TELECON" type="text" id="codigo_telecon"
-                        class="w-full p-2 border border-gray-300 rounded" placeholder="Código TELECON" />
                 </div>
                 <div class="text-center">
                     <button class="bg-green-500 text-white font-semibold py-2 px-4 rounded hover:bg-green-600 mr-2"

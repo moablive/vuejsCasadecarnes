@@ -12,6 +12,7 @@ export default defineComponent({
     setup() {
         const cliente = ref<Cliente>({
             NOME: '',
+            APELIDO: '',
             EMAIL: '',
             CNPJ: '',
             CONTATO: '',

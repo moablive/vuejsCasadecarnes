@@ -15,6 +15,8 @@ export default defineComponent({
         const isLoading = ref(true); // Estado para controlar o carregamento
         const router = useRouter();
         const showModal = ref(false);
+        const showDetailsModal = ref(false);
+        const clienteSelecionado = ref<Cliente | null>(null);
         const clienteIdParaDeletar = ref<number | null>(null);
 
         // Função para buscar clientes e nomes de vendedores
@@ -63,8 +65,21 @@ export default defineComponent({
             }
         };
 
+        const handleShowDetails = (cliente: Cliente) => {
+            if (cliente) {
+                clienteSelecionado.value = cliente;
+                showDetailsModal.value = true;
+            } else {
+                console.error('Cliente é indefinido');
+            }
+        };
+
         const closeModal = () => {
             showModal.value = false;
+        };
+
+        const closeDetailsModal = () => {
+            showDetailsModal.value = false;
         };
 
         const confirmDelete = async () => {
@@ -81,7 +96,8 @@ export default defineComponent({
 
         const filteredClientes = computed(() => {
             return clientes.value.filter(cliente =>
-                cliente.NOME?.toLowerCase().includes(searchTerm.value.toLowerCase())
+                cliente.NOME?.toLowerCase().includes(searchTerm.value.toLowerCase()) ||
+                cliente.APELIDO?.toLowerCase().includes(searchTerm.value.toLowerCase())
             );
         });
 
@@ -98,10 +114,14 @@ export default defineComponent({
             filteredClientes,
             handleEditClient,
             handleOpenModal,
+            handleShowDetails,
             closeModal,
+            closeDetailsModal,
             confirmDelete,
             showModal,
+            showDetailsModal,
             isLoading,
+            clienteSelecionado,
         };
     }
 });
